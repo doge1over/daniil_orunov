@@ -1,0 +1,93 @@
+
+> orunov-dev@1.0.0 dev
+> next dev
+
+   ▲ Next.js 15.5.18
+   - Local:        http://localhost:3000
+   - Network:      http://172.18.0.1:3000
+
+ ✓ Starting...
+ ✓ Ready in 3.1s
+ ○ Compiling /cases ...
+ ✓ Compiled /cases in 4.4s (688 modules)
+ GET /cases 200 in 4873ms
+ ○ Compiling / ...
+ ✓ Compiled / in 554ms (703 modules)
+ GET / 200 in 986ms
+ GET /cases 200 in 362ms
+ ○ Compiling /icon.svg ...
+ ✓ Compiled /icon.svg in 688ms (463 modules)
+ GET /icon.svg?6eee021fca813635 200 in 828ms
+ GET / 200 in 616ms
+ GET /icon.svg?6eee021fca813635 200 in 14ms
+ GET / 200 in 268ms
+ GET /icon.svg?6eee021fca813635 200 in 22ms
+ GET / 200 in 204ms
+ GET / 200 in 215ms
+ GET / 200 in 396ms
+ GET /icon.svg?6eee021fca813635 200 in 16ms
+ ✓ Compiled /_not-found in 356ms (710 modules)
+ GET /images/hero-main.png 404 in 831ms
+ GET /images/partners.png 404 in 829ms
+ GET /images/svc-test.png 404 in 831ms
+ GET /images/svc-develop.png 404 in 834ms
+ ✓ Compiled in 491ms (704 modules)
+ GET / 200 in 283ms
+ GET / 200 in 436ms
+ ✓ Compiled /icon.svg in 206ms (463 modules)
+ GET /icon.svg?6eee021fca813635 200 in 324ms
+ GET / 200 in 575ms
+ GET /icon.svg?6eee021fca813635 200 in 16ms
+ GET / 200 in 329ms
+ GET /icon.svg?6eee021fca813635 200 in 12ms
+ GET / 200 in 404ms
+ GET /icon.svg?6eee021fca813635 200 in 15ms
+ GET /cases 200 in 62ms
+ GET /icon.svg?6eee021fca813635 200 in 13ms
+ ○ Compiling /cases/[slug] ...
+ ✓ Compiled /cases/[slug] in 524ms (717 modules)
+ GET /cases/glp-planet 200 in 1511ms
+ GET /icon.svg?6eee021fca813635 200 in 27ms
+ GET / 200 in 125ms
+ GET /icon.svg?6eee021fca813635 200 in 19ms
+ GET / 200 in 104ms
+ GET /icon.svg?6eee021fca813635 200 in 10ms
+ GET / 200 in 98ms
+ GET /icon.svg?6eee021fca813635 200 in 10ms
+ GET /cases/avtokeys-toksovo 200 in 359ms
+ GET /icon.svg?6eee021fca813635 200 in 10ms
+ GET /cases/glp-planet 200 in 205ms
+ GET /icon.svg?6eee021fca813635 200 in 9ms
+ GET /cases/doclinika 200 in 206ms
+ GET /icon.svg?6eee021fca813635 200 in 12ms
+ GET / 200 in 112ms
+ GET /icon.svg?6eee021fca813635 200 in 16ms
+ GET /cases/labneo 200 in 48ms
+ GET /icon.svg?6eee021fca813635 200 in 9ms
+ ✓ Compiled in 229ms (258 modules)
+ ✓ Compiled in 265ms (258 modules)
+ GET /cases/labneo 200 in 275ms
+ GET /cases/labneo 200 in 58ms
+ GET / 200 in 350ms
+ GET / 200 in 127ms
+ GET /cases/labneo 200 in 154ms
+ GET /icon.svg?6eee021fca813635 200 in 11ms
+ GET / 200 in 120ms
+ GET /icon.svg?6eee021fca813635 200 in 19ms
+ ✓ Compiled in 172ms (258 modules)
+ ⨯ SyntaxError: Unexpected end of JSON input
+    at JSON.parse (<anonymous>) {
+  page: '/'
+}
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 1823ms (1064 modules)
+ GET / 500 in 2340ms
+ GET / 200 in 210ms
+ GET / 200 in 105ms
+ GET / 200 in 107ms
+ ✓ Compiled in 557ms (1061 modules)
+ GET / 200 in 385ms
+ GET / 200 in 386ms
+ GET /cases/labneo 200 in 126ms
+ ✓ Compiled /icon.svg in 346ms (667 modules)
+ GET /icon.svg?6eee021fca813635 200 in 462ms

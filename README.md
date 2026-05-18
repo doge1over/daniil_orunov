@@ -1,70 +1,126 @@
-# Getting Started with Create React App
+# orunov.studio — сайт-портфолио
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Сайт-визитка веб-разработчика Даниила Орунова. Лендинг с упором на конверсию + страницы кейсов.
 
-## Available Scripts
+## Стек
 
-In the project directory, you can run:
+- **Next.js 15** (App Router) + **React 19**
+- **TypeScript** strict
+- **Tailwind CSS v4** (CSS-first конфиг через `@theme`)
+- Серверный рендеринг (SSG для всех страниц)
+- Telegram-бот для приёма заявок (опционально)
 
-### `npm start`
+## Запуск
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```bash
+# 1. Установить зависимости
+npm install
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# 2. Скопировать переменные окружения
+cp .env.example .env.local
 
-### `npm test`
+# 3. Запустить дев-сервер
+npm run dev
+# → http://localhost:3000
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Прод-сборка
+npm run build
+npm run start
 
-### `npm run build`
+# Проверка типов
+npm run typecheck
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+> Если используете pnpm/yarn — замените `npm` на свой пакет-менеджер.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Структура
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+src/
+├── app/
+│   ├── layout.tsx              ← root layout, SEO defaults, JSON-LD
+│   ├── page.tsx                ← главная (одностраничник)
+│   ├── globals.css             ← Tailwind v4 + тема
+│   ├── sitemap.ts              ← /sitemap.xml
+│   ├── robots.ts               ← /robots.txt
+│   ├── opengraph-image.tsx     ← /og-image (генерируется на edge)
+│   ├── not-found.tsx           ← 404
+│   ├── cases/
+│   │   ├── page.tsx            ← /cases
+│   │   └── [slug]/page.tsx     ← /cases/:slug
+│   ├── kontakty/page.tsx       ← /kontakty
+│   └── api/lead/route.ts       ← обработчик заявок
+├── components/                 ← Header, Hero, Cases, Pricing, FAQ и т.д.
+├── content/                    ← редактируемые данные
+│   ├── cases.ts                ← кейсы
+│   ├── services.ts             ← услуги и цены
+│   ├── faq.ts                  ← FAQ
+│   └── testimonials.ts         ← отзывы
+└── lib/
+    ├── site.ts                 ← глобальный конфиг сайта
+    └── jsonld.ts               ← Schema.org разметка
+```
 
-### `npm run eject`
+## Что редактировать
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+| Что | Где |
+| --- | --- |
+| Имя, email, телефон, соцсети, URL | `src/lib/site.ts` |
+| Кейсы (карточки + страницы) | `src/content/cases.ts` |
+| Услуги и цены | `src/content/services.ts` |
+| FAQ (попадает в JSON-LD) | `src/content/faq.ts` |
+| Отзывы | `src/content/testimonials.ts` |
+| Цвета / шрифты | `src/app/globals.css` (`@theme`) |
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## SEO из коробки
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- SSG все страницы — поисковики видят полный HTML
+- Уникальные `<title>` и `meta description` на каждой странице
+- Open Graph + Twitter Cards
+- Auto-generated OG-картинка (`/opengraph-image`)
+- JSON-LD: `Person`, `ProfessionalService`, `WebSite`, `FAQPage`, `BreadcrumbList`, `CreativeWork`
+- `sitemap.xml` обновляется при добавлении кейсов
+- `robots.txt` разрешает AI-краулеры (GPTBot, ClaudeBot, PerplexityBot, Google-Extended)
+- `llms.txt` для AI-поиска (Perplexity, ChatGPT, AI Overviews)
+- Security-заголовки (HSTS, X-Content-Type-Options и т.д.)
+- Чистая семантика, accessible, prefers-reduced-motion
+- Core Web Vitals: LCP-friendly hero, никакого CLS
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Конверсия / продажи
 
-## Learn More
+- Закреплённый хедер с CTA «Обсудить проект»
+- 4 типа предложений с фикс-ценами и сроками
+- Кейсы с метриками результата (выручка, конверсия, скорость)
+- Блок гарантий (фикс-цена, 90 дней гарантии, демо по пятницам, исходники у клиента)
+- 3 социальных пруфа (testimonials)
+- FAQ закрывает возражения
+- Форма заявки с типом проекта, бюджетом и honeypot против ботов
+- Альтернативные каналы: Email, Telegram, WhatsApp, телефон
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Приём заявок в Telegram
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Создайте бота через [@BotFather](https://t.me/BotFather), получите `TELEGRAM_BOT_TOKEN`.
+2. Узнайте свой `chat_id` у [@userinfobot](https://t.me/userinfobot).
+3. Заполните `.env.local`:
+   ```
+   TELEGRAM_BOT_TOKEN=...
+   TELEGRAM_CHAT_ID=...
+   ```
+4. Заявки будут падать в личку бота. Без этих переменных лиды пишутся в консоль сервера.
 
-### Code Splitting
+## Деплой
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Самый простой путь — Vercel:
 
-### Analyzing the Bundle Size
+```bash
+npm i -g vercel
+vercel
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Не забудьте добавить переменные окружения в дашборде Vercel.
 
-### Making a Progressive Web App
+Альтернативно: `npm run build && npm run start` на любом Node 20+ хостинге.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Лицензия
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Исходники — `MIT`. Дизайн и контент — © Даниил Орунов.

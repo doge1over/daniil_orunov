@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(curl *)",
+      "Read(//tmp/**)",
+      "Bash(PORT=3333 npm run *)",
+      "Bash(PORT=4040 npm run *)",
+      "Bash(npx tsc *)"
+    ]
+  }
+}
